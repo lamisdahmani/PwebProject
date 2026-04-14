@@ -1,0 +1,423 @@
+/* ============================================
+   VARIABLES & RESET
+   ============================================ */
+:root {
+  --green-dark:   #1b5e35;
+  --green-mid:    #236b3e;
+  --green-light:  #d6e9d6;
+  --green-pale:   #eef5ec;
+  --green-nav:    #ddecd8;
+  --white:        #ffffff;
+  --text-dark:    #1a2e1a;
+  --text-mid:     #3a5a3a;
+  --text-muted:   #6b8c6b;
+  --badge-win-bg: #1b5e35;
+  --badge-win-tx: #ffffff;
+  --badge-lose-bg:#fce4e4;
+  --badge-lose-tx:#b71c1c;
+  --border:       #c2d8c2;
+  --radius:       10px;
+  --radius-sm:    6px;
+  --shadow:       0 2px 12px rgba(30, 80, 40, 0.08);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--green-pale);
+  color: var(--text-dark);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul { list-style: none; }
+
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--green-nav);
+  padding: 0 2rem;
+  height: 60px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  letter-spacing: 0.01em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text-mid);
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--green-dark);
+  border-bottom-color: var(--green-dark);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--green-dark);
+  color: var(--green-dark);
+}
+
+.btn-outline:hover {
+  background: var(--green-dark);
+  color: var(--white);
+}
+
+.btn-primary {
+  background: var(--green-dark);
+  border: 1.5px solid var(--green-dark);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--green-mid);
+}
+
+.btn-cta {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0.85rem 2rem;
+  text-align: center;
+  background: transparent;
+  border: 1.5px solid var(--green-dark);
+  color: var(--green-dark);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-cta:hover {
+  background: var(--green-dark);
+  color: var(--white);
+}
+
+
+/* ============================================
+   HERO BANNER
+   ============================================ */
+.hero {
+  background: var(--green-dark);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2.5rem 3rem;
+  margin: 1.5rem auto;
+  max-width: 1000px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hero-content h1 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.hero-content p {
+  font-size: 0.9rem;
+  opacity: 0.88;
+  line-height: 1.6;
+}
+
+.hero-counter {
+  background: var(--white);
+  color: var(--text-dark);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.8rem;
+  text-align: center;
+  min-width: 150px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.counter-icon {
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.counter-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--green-dark);
+  line-height: 1;
+}
+
+.counter-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+
+/* ============================================
+   INFO CARDS
+   ============================================ */
+.cards-section {
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+}
+
+.cards-grid {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.card {
+  flex: 1;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 6px 20px rgba(30, 80, 40, 0.13);
+  transform: translateY(-2px);
+}
+
+.card-tag {
+  display: inline-block;
+  background: var(--green-dark);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  align-self: flex-start;
+}
+
+.card p {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.card-link {
+  font-size: 0.84rem;
+  color: var(--green-dark);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: gap 0.2s;
+}
+
+.card-link:hover {
+  gap: 0.5rem;
+}
+
+
+/* ============================================
+   RESULTS TABLE
+   ============================================ */
+.results-section {
+  max-width: 1000px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1.5rem;
+}
+
+.results-section h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.table-wrapper {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.2rem;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+}
+
+.results-table thead tr {
+  background: var(--green-light);
+}
+
+.results-table th {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--border);
+}
+
+.results-table td {
+  padding: 0.7rem 1rem;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  border-bottom: 1px solid #eef2ee;
+}
+
+.results-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.results-table tbody tr:hover {
+  background: var(--green-pale);
+}
+
+/* Status badges */
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge.gagnant {
+  background: var(--badge-win-bg);
+  color: var(--badge-win-tx);
+}
+
+.badge.non-gagnant {
+  background: var(--badge-lose-bg);
+  color: var(--badge-lose-tx);
+}
+
+
+/* ============================================
+   CTA
+   ============================================ */
+.cta-wrapper {
+  margin-top: 1rem;
+}
+
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  background: var(--green-nav);
+  margin-top: 2rem;
+}
+
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero {
+    flex-direction: column;
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .hero-counter {
+    width: 100%;
+  }
+
+  .cards-grid {
+    flex-direction: column;
+  }
+
+  .cards-section,
+  .results-section {
+    padding: 0 1rem;
+  }
+
+  .results-table th,
+  .results-table td {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
