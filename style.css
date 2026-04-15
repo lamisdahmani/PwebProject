@@ -31,6 +31,8 @@ body {
   color: var(--text-dark);
   font-size: 15px;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
   
 }
 
@@ -361,6 +363,7 @@ ul { list-style: none; }
   border-top: 1px solid var(--border);
   background: var(--green-nav);
   margin-top: 2rem;
+  flex-shrink: 0;
 }
 
 

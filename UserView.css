@@ -144,6 +144,8 @@ body:has(.layout) {
 
 /*Hero section userdash*/
 .hero--dashboard {
+ background-color:var(--green-dark);
+ border-radius:var(--radius);
   display: block;
   max-width: none;
   margin: 0;
