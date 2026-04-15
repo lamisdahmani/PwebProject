@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats Précédents - Hadj</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">Tirage au sort</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="modalites.html">Modalités</a></li>
+            <li><a href="regles.html">Règles</a></li>
+            <li><a href="resultats.html" class="active">Résultats</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="login.html" class="btn btn-primary">Se connecter</a>
+        </div>
+    </nav>
+
+    <main class="results-section" style="margin-top: 3rem;">
+        <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h2 style="font-size: 1.8rem; color: var(--green-dark);">Archives des Résultats</h2>
+            <select style="width: 200px; padding: 0.4rem;">
+                <option>Édition 2025</option>
+                <option>Édition 2024</option>
+                <option>Édition 2023</option>
+            </select>
+        </header>
+
+        <div class="table-wrapper">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>N° Identification (NIN)</th>
+                        <th>Nom et Prénom</th>
+                        <th>Wilaya de Résidence</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>123456789012</td>
+                        <td>Dahmani Lamis</td>
+                        <td>Alger</td>
+                        <td><span class="badge gagnant">Gagnant</span></td>
+                    </tr>
+                    <tr>
+                        <td>987654321098</td>
+                        <td>Derbil Meriem</td>
+                        <td>Alger</td>
+                        <td><span class="badge gagnant">Gagnant</span></td>
+                    </tr>
+                    <tr>
+                        <td>456123789045</td>
+                        <td>Zenati Mourad</td>
+                        <td>Béjaïa</td>
+                        <td><span class="badge gagnant">Gagnant</span></td>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
+        
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+            Note : Seuls les candidats ayant un compte validé apparaissent dans ces listes officielles[cite: 41, 56].
+        </p>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Ministère des Affaires Religieuses et du Waqf — Plateforme Tirage Hadjj [cite: 137]</p>
+    </footer>
+
+</body>
+</html>
