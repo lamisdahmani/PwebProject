@@ -40,11 +40,6 @@ body {
   color: var(--text-dark);
   font-size: 15px;
   line-height: 1.6;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-   
 }
 
 a {
@@ -369,12 +364,16 @@ ul { list-style: none; }
 /*Footer */
 .footer {
   text-align: center;
-  padding: 1.5rem;
+  padding: 15px;
   font-size: 0.78rem;
   color: var(--text-muted);
   border-top: 1px solid var(--border);
   background: var(--green-nav);
   margin-top: 2rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 
@@ -603,7 +602,4 @@ select {
 .form-login-link a {
   color: var(--green-dark);
   font-weight: 600;
-  text-decoration: underline;
-}
-
-
+  text-decoration: underline;}
