@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <!-- ===== NAVBAR ===== -->
+
   <nav class="navbar">
     <div class="nav-brand">Tirage au sort</div>
     <ul class="nav-links">
@@ -24,7 +24,7 @@
     </div>
   </nav>
 
-  <!-- ===== FORM SECTION ===== -->
+
   <main class="form-page">
     <div class="form-container">
 
@@ -36,7 +36,7 @@
 
       <form action="traitement_inscription.php" method="POST" id="registerForm" novalidate>
 
-        <!-- Row 1: Nom / Prénom -->
+        
         <div class="form-row">
           <div class="form-group">
             <label for="nom">Nom <span class="required">*</span></label>
@@ -50,7 +50,7 @@
           </div>
         </div>
 
-        <!-- Row 2: NIN / Date de naissance -->
+        
         <div class="form-row">
           <div class="form-group">
             <label for="nin">Numéro d'identification national (NIN) <span class="required">*</span></label>
@@ -64,7 +64,7 @@
           </div>
         </div>
 
-        <!-- Row 3: Prénom père / Prénom grand-père -->
+        
         <div class="form-row">
           <div class="form-group">
             <label for="pere">Prénom du père <span class="required">*</span></label>
@@ -78,7 +78,7 @@
           </div>
         </div>
 
-        <!-- Row 4: Nom mère / Email -->
+        
         <div class="form-row">
           <div class="form-group">
             <label for="mere">Nom et prénom de la mère <span class="required">*</span></label>
@@ -92,7 +92,7 @@
           </div>
         </div>
 
-        <!-- Row 5: Téléphone / Wilaya -->
+        
         <div class="form-row">
           <div class="form-group">
             <label for="telephone">Numéro de téléphone <span class="required">*</span></label>
@@ -103,7 +103,6 @@
             <label for="wilaya">Wilaya <span class="required">*</span></label>
             <select id="wilaya" name="wilaya" required>
               <option value="" disabled selected>Sélectionner une wilaya</option>
-              <option value="16">Alger</option>
               <option value="1">Adrar</option>
               <option value="2">Chlef</option>
               <option value="3">Laghouat</option>
@@ -119,6 +118,7 @@
               <option value="13">Tlemcen</option>
               <option value="14">Tiaret</option>
               <option value="15">Tizi Ouzou</option>
+              <option value="16">Alger</option>
               <option value="17">Djelfa</option>
               <option value="18">Jijel</option>
               <option value="19">Sétif</option>
@@ -151,12 +151,22 @@
               <option value="46">Aïn Témouchent</option>
               <option value="47">Ghardaïa</option>
               <option value="48">Relizane</option>
+              <option value="49">Timinoun</option>
+              <option value="50">Bordj Badji Mokhtar</option>
+              <option value="51">Ouled djellal</option>
+              <option value="52">Beni Abbas</option>
+              <option value="53">Ein Salah</option>
+              <option value="54">Ein Guezzam</option>
+              <option value="55">Touggourt</option>
+              <option value="56">Djanet</option>
+              <option value="57">M'ghair</option>
+              <option value="58">Meniaa</option>
             </select>
             <span class="error-msg" id="err-wilaya"></span>
           </div>
         </div>
 
-        <!-- Row 6: Mot de passe / Confirmer -->
+       
         <div class="form-row">
           <div class="form-group">
             <label for="password">Mot de passe <span class="required">*</span></label>
@@ -170,7 +180,7 @@
           </div>
         </div>
 
-        <!-- Submit -->
+        <!Submit>
         <div class="form-submit">
           <button type="submit" class="btn-submit">Créer un compte</button>
         </div>
@@ -183,12 +193,11 @@
     </div>
   </main>
 
-  <!-- ===== FOOTER ===== -->
+  <! FOOTER >
   <footer class="footer">
     <p>&copy; 2026 Ministère des Affaires Religieuses et du Waqf — Plateforme Tirage Hadjj</p>
   </footer>
 
-  <script src="validation.js"></script>
 
 </body>
 </html>
