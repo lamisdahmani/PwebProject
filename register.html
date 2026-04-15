@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulaire d'inscription – Tirage au Sort</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="register.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-brand">Tirage au sort</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="modalites.html">Modalités</a></li>
+      <li><a href="regles.html">Règles</a></li>
+      <li><a href="resultats.html">Résultats</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="register.html" class="btn btn-outline">S'inscrire</a>
+      <a href="login.html" class="btn btn-primary">Se connecter</a>
+    </div>
+  </nav>
+
+  <!-- ===== FORM SECTION ===== -->
+  <main class="form-page">
+    <div class="form-container">
+
+      <div class="form-header">
+        <div class="divider-line"></div>
+        <h1>Formulaire d'inscription</h1>
+        <div class="divider-line"></div>
+      </div>
+
+      <form action="traitement_inscription.php" method="POST" id="registerForm" novalidate>
+
+        <!-- Row 1: Nom / Prénom -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nom">Nom <span class="required">*</span></label>
+            <input type="text" id="nom" name="nom" placeholder="Dahmani" required />
+            <span class="error-msg" id="err-nom"></span>
+          </div>
+          <div class="form-group">
+            <label for="prenom">Prénom <span class="required">*</span></label>
+            <input type="text" id="prenom" name="prenom" placeholder="Lamis" required />
+            <span class="error-msg" id="err-prenom"></span>
+          </div>
+        </div>
+
+        <!-- Row 2: NIN / Date de naissance -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nin">Numéro d'identification national (NIN) <span class="required">*</span></label>
+            <input type="text" id="nin" name="nin" placeholder="12345674891243" maxlength="18" required />
+            <span class="error-msg" id="err-nin"></span>
+          </div>
+          <div class="form-group">
+            <label for="ddn">Date de naissance <span class="required">*</span></label>
+            <input type="date" id="ddn" name="date_naissance" required />
+            <span class="error-msg" id="err-ddn"></span>
+          </div>
+        </div>
+
+        <!-- Row 3: Prénom père / Prénom grand-père -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pere">Prénom du père <span class="required">*</span></label>
+            <input type="text" id="pere" name="prenom_pere" placeholder="kskalalala" required />
+            <span class="error-msg" id="err-pere"></span>
+          </div>
+          <div class="form-group">
+            <label for="grandpere">Prénom du grand-père <span class="required">*</span></label>
+            <input type="text" id="grandpere" name="prenom_grandpere" placeholder="kskalalala" required />
+            <span class="error-msg" id="err-grandpere"></span>
+          </div>
+        </div>
+
+        <!-- Row 4: Nom mère / Email -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="mere">Nom et prénom de la mère <span class="required">*</span></label>
+            <input type="text" id="mere" name="nom_mere" placeholder="kskalalala" required />
+            <span class="error-msg" id="err-mere"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="username@gmail.com" required />
+            <span class="error-msg" id="err-email"></span>
+          </div>
+        </div>
+
+        <!-- Row 5: Téléphone / Wilaya -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="telephone">Numéro de téléphone <span class="required">*</span></label>
+            <input type="tel" id="telephone" name="telephone" placeholder="0555 36 47 88" required />
+            <span class="error-msg" id="err-telephone"></span>
+          </div>
+          <div class="form-group">
+            <label for="wilaya">Wilaya <span class="required">*</span></label>
+            <select id="wilaya" name="wilaya" required>
+              <option value="" disabled selected>Sélectionner une wilaya</option>
+              <option value="16">Alger</option>
+              <option value="1">Adrar</option>
+              <option value="2">Chlef</option>
+              <option value="3">Laghouat</option>
+              <option value="4">Oum El Bouaghi</option>
+              <option value="5">Batna</option>
+              <option value="6">Béjaïa</option>
+              <option value="7">Biskra</option>
+              <option value="8">Béchar</option>
+              <option value="9">Blida</option>
+              <option value="10">Bouira</option>
+              <option value="11">Tamanrasset</option>
+              <option value="12">Tébessa</option>
+              <option value="13">Tlemcen</option>
+              <option value="14">Tiaret</option>
+              <option value="15">Tizi Ouzou</option>
+              <option value="17">Djelfa</option>
+              <option value="18">Jijel</option>
+              <option value="19">Sétif</option>
+              <option value="20">Saïda</option>
+              <option value="21">Skikda</option>
+              <option value="22">Sidi Bel Abbès</option>
+              <option value="23">Annaba</option>
+              <option value="24">Guelma</option>
+              <option value="25">Constantine</option>
+              <option value="26">Médéa</option>
+              <option value="27">Mostaganem</option>
+              <option value="28">M'Sila</option>
+              <option value="29">Mascara</option>
+              <option value="30">Ouargla</option>
+              <option value="31">Oran</option>
+              <option value="32">El Bayadh</option>
+              <option value="33">Illizi</option>
+              <option value="34">Bordj Bou Arréridj</option>
+              <option value="35">Boumerdès</option>
+              <option value="36">El Tarf</option>
+              <option value="37">Tindouf</option>
+              <option value="38">Tissemsilt</option>
+              <option value="39">El Oued</option>
+              <option value="40">Khenchela</option>
+              <option value="41">Souk Ahras</option>
+              <option value="42">Tipaza</option>
+              <option value="43">Mila</option>
+              <option value="44">Aïn Defla</option>
+              <option value="45">Naâma</option>
+              <option value="46">Aïn Témouchent</option>
+              <option value="47">Ghardaïa</option>
+              <option value="48">Relizane</option>
+            </select>
+            <span class="error-msg" id="err-wilaya"></span>
+          </div>
+        </div>
+
+        <!-- Row 6: Mot de passe / Confirmer -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="password">Mot de passe <span class="required">*</span></label>
+            <input type="password" id="password" name="mot_de_passe" placeholder="••••••••••" required />
+            <span class="error-msg" id="err-password"></span>
+          </div>
+          <div class="form-group">
+            <label for="confirm">Confirmer mot de passe <span class="required">*</span></label>
+            <input type="password" id="confirm" name="confirmer_mot_de_passe" placeholder="••••••••••" required />
+            <span class="error-msg" id="err-confirm"></span>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-submit">
+          <button type="submit" class="btn-submit">Créer un compte</button>
+        </div>
+
+        <p class="form-login-link">
+          Vous avez déjà un compte ? <a href="login.html">Se connecter</a>
+        </p>
+
+      </form>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>&copy; 2026 Ministère des Affaires Religieuses et du Waqf — Plateforme Tirage Hadjj</p>
+  </footer>
+
+  <script src="validation.js"></script>
+
+</body>
+</html>
