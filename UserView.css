@@ -54,7 +54,7 @@ body:has(.layout) {
 /* Layout shell */
 .layout {
   display: flex;
-  min-height: 100vh ; 
+  height: 100vh ; 
   background: var(--green-pale);
   overflow: hidden;
 
@@ -67,21 +67,24 @@ body:has(.layout) {
 
 .main {
   flex: 1;
-  padding: 32px;
+  padding: 20px 32px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   background: var(--green-pale);
+  overflow-y: auto;   
+  height: 100vh;
 }
 
 /* Sidebar */
 .sidebar {
   width: 200px;
   background: var(--green-dark);
-  min-height: 100vh; 
+  height: 100%; 
   display: flex;
   flex-direction: column;
   padding: 28px 0 0px;
+  position: sticky;
   flex-shrink: 0;
 }
 
@@ -137,9 +140,15 @@ body:has(.layout) {
 
 /*Main area*/
 .main {
-  flex: 1; padding: 28px;
-  display: flex; flex-direction: column; gap: 20px;
-  background: var(--green-pale); overflow: hidden;
+  flex: 1; 
+  height: 100vh;
+  padding: 24px 32px;
+  display: flex; 
+  flex-direction: column; 
+  gap: 20px;
+  background: var(--green-pale);
+  overflow-y: column;
+  padding-bottom: 40px;
 }
 
 /*Hero section userdash*/
@@ -415,6 +424,9 @@ body:has(.layout) {
 /* Info Alert Box */
 .info-alert {
   background: #f0fdf4;
+  flex-shrink: 0;
+  margin-top: auto;
+  width: 100%;
   border: 1px solid #bbf7d0;
   border-radius: var(--radius);
   padding: 16px 20px;
@@ -453,10 +465,10 @@ body:has(.layout) {
   height: 100%;
   background: rgba(0, 0, 0, 0.5); /* Dims the background */
   backdrop-filter: blur(4px);    /* Blurs the page behind it */
-  display: none;                /* HIDDEN BY DEFAULT */
+  display: none;               
   align-items: center;
   justify-content: center;
-  z-index: 9999;                /* Ensures it stays on top of everything */
+  z-index: 9999;                
 }
 
 .modal-card {
