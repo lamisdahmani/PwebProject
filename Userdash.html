@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tirage au sort — Hadj 2026</title>
-<link rel="stylesheet" href="UserView.css"
+<link rel="stylesheet" href="UserView.css">
 </head>
 <body>
  
-<div class="layout">
+<div class="layout">    
  
   <div class="sidebar">
     <div class="sidebar-logo">
@@ -16,19 +16,20 @@
       <div class="sidebar-logo-sub">Hadj 2026</div>
     </div>
     <div class="nav-label">Navigation</div>
-    <div class="nav-item active">
+    <a href="Userdash.html" class="nav-item active">
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none">
         <path d="M2 6.5L8 2l6 4.5V14H10v-3.5H6V14H2V6.5z" fill="currentColor"/>
       </svg>
       Dashboard
-    </div>
-    <div class="nav-item">
+    </a>
+    <a href="UserResults.html" class="nav-item">
       <svg class="nav-icon" viewBox="0 0 16 16" fill="none">
         <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2" fill="none"/>
         <path d="M5 7h6M5 10h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
       Mes résultats
-    </div>
+    </a>
+
     <div class="sidebar-footer">
       <div class="avatar">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -37,7 +38,7 @@
         </svg>
       </div>
       <span class="footer-name">UserName</span>
-      <div class="logout-btn">
+      <div class="logout-btn" onclick="openLogoutModal()" style="cursor: pointer;">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M9.5 7H3m0 0 2-2M3 7l2 2M6 4V2.5A.5.5 0 0 1 6.5 2H12a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5H6.5a.5.5 0 0 1-.5-.5V10" stroke="#d6e9d6" stroke-width="1.2" stroke-linecap="round"/>
         </svg>
@@ -46,7 +47,6 @@
   </div>
  
   <div class="main">
- 
     <div class="hero hero--dashboard">
       <div class="hero-badge"><div class="hero-badge-dot"></div>Saison 2026</div>
       <div class="hero-title">Tiradj au sort du Hadjj 2026</div>
@@ -55,12 +55,9 @@
     </div>
  
     <div class="stats-grid">
- 
       <div class="stat-card">
         <div class="stat-icon stat-icon--green">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-               fill="none" stroke="#1b5e35" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1b5e35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="8" r="4"/>
               <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
           </svg>
@@ -97,11 +94,9 @@
           <div class="stat-badge stat-badge--date" style="margin-top:6px;">Dans 30 jours</div>
         </div>
       </div>
- 
     </div>
  
     <div class="bottom-row">
- 
       <div class="info-card">
         <div class="info-card-title">Calendrier du tirage</div>
         <div class="timeline">
@@ -140,10 +135,44 @@
         <div class="cta-card-sub">Les inscriptions sont ouvertes jusqu'au 10 mai 2026. Ne manquez pas votre chance.</div>
         <a href="#" class="btn-inscription">Inscription au tirage</a>
       </div>
- 
     </div>
   </div>
 </div>
- 
+
+<div id="logoutModal" class="modal-overlay">
+  <div class="modal-card">
+    <div class="modal-icon">
+      <div style="background: #fff5f5; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b71c1c" stroke-width="2">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="modal-title" style="margin-top: 16px; font-weight: 700; font-size: 1.2rem;">Se déconnecter ?</div>
+    <div class="modal-text" style="color: #666; margin: 8px 0 24px;">Êtes-vous sûr(e) de vouloir quitter votre session ?</div>
+    <div class="modal-actions" style="display: flex; gap: 12px;">
+      <button class="btn-cancel" onclick="closeLogoutModal()" style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer; font-weight: 600;">Annuler</button>
+      <a href="index.html" class="btn-confirm" style="flex: 1; padding: 10px; background: #b71c1c; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; text-align: center;">Se déconnecter</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('logoutModal');
+
+  function openLogoutModal() {
+    modal.style.display = 'flex';
+  }
+
+  function closeLogoutModal() {
+    modal.style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      closeLogoutModal();
+    }
+  }
+</script>
 </body>
 </html>

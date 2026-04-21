@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mes Résultats — Hadj 2026</title>
+<link rel="stylesheet" href="UserView.css">
+</head>
+<body>
+ 
+<div class="layout">    
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-text">Tirage au sort</div>
+      <div class="sidebar-logo-sub">Hadj 2026</div>
+    </div>
+    <div class="nav-label">Navigation</div>
+    <a href="Userdash.html" class="nav-item">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none">
+        <path d="M2 6.5L8 2l6 4.5V14H10v-3.5H6V14H2V6.5z" fill="currentColor"/>
+      </svg>
+      Dashboard
+    </a>
+    <a href="UserResults.html" class="nav-item active">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none">
+        <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        <path d="M5 7h6M5 10h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      Mes résultats
+    </a>
+    <div class="sidebar-footer">
+      <div class="avatar">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="6" r="2.5" fill="#d6e9d6"/>
+          <path d="M3 13c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="#d6e9d6" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <span class="footer-name">UserName</span>
+      <div class="logout-btn" onclick="openLogoutModal()">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M9.5 7H3m0 0 2-2M3 7l2 2M6 4V2.5A.5.5 0 0 1 6.5 2H12a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5H6.5a.5.5 0 0 1-.5-.5V10" stroke="#d6e9d6" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="main">
+    <div class="results-page-header">
+      <h1 class="hero-title" style="color: var(--text-dark); margin-bottom: 4px;">Mes résultats</h1>
+      <p class="hero-sub" style="color: var(--text-muted); margin-bottom: 24px;">Historique de toutes vos participations au tirage au sort</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon stat-icon--green">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        <div class="stat-value">02</div>
+        <div class="stat-label">Participations totales</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon stat-icon--amber">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        </div>
+        <div class="stat-value">00</div>
+        <div class="stat-label">Fois sélectionné(e)</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon stat-icon--teal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        </div>
+        <div class="stat-value">+10%</div>
+        <div class="stat-label">Bonus de chances accumulé</div>
+      </div>
+    </div>
+ 
+    <div class="results-container">
+      <div class="table-header-row">
+        <div class="results-header">Historique des participations</div>
+        
+      </div>
+
+      <div class="table-wrapper">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>ÉDITION</th>
+              <th>DATE DU TIRAGE</th>
+              <th>RÉSULTAT</th>
+              <th>BONUS CHANCES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="edition-tag">🕋 Hadjj 2024</span></td>
+              <td>15 Mai 2024</td>
+              <td><span class="status-badge status--lose">● Non Gagnant</span></td>
+              <td><span class="bonus-tag">+5%</span></td>
+            </tr>
+            <tr>
+              <td><span class="edition-tag">🕋 Hadjj 2025</span></td>
+              <td>15 Mai 2025</td>
+              <td><span class="status-badge status--lose">● Non Gagnant</span></td>
+              <td><span class="bonus-tag">+5%</span></td>
+            </tr>
+            <tr>
+              <td><span class="edition-tag">🕋 Hadjj 2026</span></td>
+              <td>15 Mai 2026</td>
+              <td><span class="status-badge status--pending">● En attente</span></td>
+              <td><span class="bonus-tag" style="background: #e5e7eb; color: #6b7280;">—</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="info-alert">
+      <div class="alert-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      </div>
+      <div class="alert-text">
+        Chaque participation sans succès vous accorde un <strong>bonus de +5%</strong> pour l'édition suivante, augmentant vos chances d'être sélectionné(e).
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="logoutModal" class="modal-overlay">
+  <div class="modal-card">
+    <div class="modal-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b71c1c" stroke-width="2">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="modal-title">Se déconnecter ?</div>
+    <div class="modal-text">Êtes-vous sûr(e) de vouloir quitter votre session ?</div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeLogoutModal()">Annuler</button>
+      <a href="index.html" class="btn-confirm">Se déconnecter</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('logoutModal');
+
+  function openLogoutModal() {
+    modal.style.display = 'flex';
+  }
+
+  function closeLogoutModal() {
+    modal.style.display = 'none';
+  }
+
+  // Close modal if user clicks the background overlay
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      closeLogoutModal();
+    }
+  }
+</script>
+ 
+</body>
+</html>
