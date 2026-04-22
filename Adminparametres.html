@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paramétrage – Admin</title>
+  <link rel="stylesheet" href="adminview.css" />
+</head>
+<body>
+<div class="shell">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <div class="sidebar-brand"><h2>Tirage au sort</h2><span>Espace Admin</span></div>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-nav-label">Navigation</p>
+    <nav class="sidebar-nav">
+      <a href="Admindash.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="Adminreslts.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Utilisateurs <span class="notif-count">4</span>
+      </a>
+      <a href="Adminparametres.html" class="active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Paramétrage
+      </a>
+      <a href="Adminreslts.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Résultats
+      </a>
+      
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+        <div><div class="sidebar-username">Admin</div><div class="sidebar-role">Administrateur</div></div>
+      </div>
+      <button class="sidebar-logout-btn" onclick="document.getElementById('logoutModal').classList.add('open')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+    <div class="page-header">
+      <h1>Paramétrage du tirage</h1>
+      <p>Configuration de l'édition Hadjj 2026 — suivre l'ordre des étapes</p>
+    </div>
+
+    <!-- Steps bar -->
+    <div class="steps-bar">
+      <div class="step done">
+        <div class="step-num"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="step-label">Nombre de gagnants</div>
+      </div>
+      <div class="step done">
+        <div class="step-num"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="step-label">Date du tirage</div>
+      </div>
+      <div class="step current">
+        <div class="step-num">3</div>
+        <div class="step-label">Dates d'inscription</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-label">Lancement</div>
+      </div>
+    </div>
+
+    <div class="info-strip">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span>Le paramétrage suit un ordre logique strict : <strong>Nombre de gagnants → Date du tirage → Dates d'inscription → Lancement</strong>. Chaque étape se débloque après la précédente.</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+
+      <!-- Step 1 -->
+      <div class="card">
+        <div class="card-header">
+          <div><h2>① Nombre de gagnants</h2><p>Définir le quota de places disponibles</p></div>
+          <span class="pill pill-done">Complété</span>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label class="lbl">Nombre de gagnants <span class="req">*</span></label>
+            <input type="number" class="form-input" value="500" min="1" placeholder="ex: 500">
+            <span class="hint">Places disponibles pour ce tirage</span>
+          </div>
+          <div style="margin-top:1rem;"><button class="btn btn-outline">Mettre à jour</button></div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="card">
+        <div class="card-header">
+          <div><h2>② Date du tirage</h2><p>Doit être après la clôture des inscriptions</p></div>
+          <span class="pill pill-done">Complété</span>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label class="lbl">Date du tirage <span class="req">*</span></label>
+            <input type="date" class="form-input" value="2026-05-15">
+            <span class="hint">Le tirage ne peut être lancé qu'à cette date exacte</span>
+          </div>
+          <div style="margin-top:1rem;"><button class="btn btn-outline">Mettre à jour</button></div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="card">
+        <div class="card-header">
+          <div><h2>③ Période d'inscription</h2><p>Ouverture et clôture des inscriptions</p></div>
+          <span class="pill pill-pending">En cours</span>
+        </div>
+        <div class="card-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="lbl">Date d'ouverture <span class="req">*</span></label>
+              <input type="date" class="form-input" value="2026-04-01">
+            </div>
+            <div class="form-group">
+              <label class="lbl">Date de clôture <span class="req">*</span></label>
+              <input type="date" class="form-input" value="2026-04-30">
+              <span class="hint">Doit être avant la date du tirage</span>
+            </div>
+          </div>
+          <div style="margin-top:1rem;"><button class="btn btn-primary">Enregistrer les dates</button></div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="card">
+        <div class="card-header">
+          <div><h2>④ Lancement du tirage</h2><p>Disponible uniquement le 15 Mai 2026</p></div>
+          <span class="pill pill-closed">À venir</span>
+        </div>
+        <div class="card-body">
+          <div class="warn-strip">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span>Le tirage ne peut être lancé que le <strong>15 Mai 2026</strong>. Le bouton sera activé automatiquement à cette date.</span>
+          </div>
+          <table class="param-tbl" style="margin-bottom:1.25rem;">
+            <tr><td>Participants validés</td><td>1 200</td></tr>
+            <tr><td>Nombre de gagnants</td><td>500</td></tr>
+            <tr><td>Date de lancement</td><td>15 Mai 2026</td></tr>
+          </table>
+          <div style="display:flex; justify-content:center;">
+            <button class="btn-launch" disabled>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Lancer le tirage (disponible le 15/05)
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- LOGOUT MODAL -->
+<div id="logoutModal" class="overlay">
+  <div class="modal">
+    <div class="modal-icon" style="background:#fce4e4; color:#b71c1c;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></div>
+    <h2>Se déconnecter ?</h2>
+    <p>Êtes-vous sûr(e) de vouloir quitter votre session administrateur ?</p>
+    <div class="modal-actions">
+      <button class="btn-cancel-modal" onclick="document.getElementById('logoutModal').classList.remove('open')">Annuler</button>
+      <a href="Login.html" class="btn-confirm-modal">Se déconnecter</a>
+    </div>
+  </div>
+</div>
+
+<script src="Admin.js"></script>
+</body>
+</html>
