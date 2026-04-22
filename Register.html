@@ -9,8 +9,7 @@
 </head>
 <body>
 
-
-   <nav class="navbar">
+  <nav class="navbar">
     <div class="nav-brand">Tirage au sort</div>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Accueil</a></li>
@@ -22,9 +21,7 @@
       <a href="Register.html" class="btn btn-outline">S'inscrire</a>
       <a href="Login.html" class="btn btn-primary">Se connecter</a>
     </div>
-    
   </nav>
-
 
   <main class="form-page">
     <div class="form-container">
@@ -35,9 +32,11 @@
         <div class="divider-line"></div>
       </div>
 
+      <!-- novalidate : désactive la validation native du navigateur,
+           notre register.js prend le relais -->
       <form action="traitement_inscription.php" method="POST" id="registerForm" novalidate>
 
-        
+        <!-- Nom / Prénom -->
         <div class="form-row">
           <div class="form-group">
             <label for="nom">Nom <span class="required">*</span></label>
@@ -51,12 +50,14 @@
           </div>
         </div>
 
-        
+        <!-- NIN / Date de naissance -->
         <div class="form-row">
           <div class="form-group">
             <label for="nin">Numéro d'identification national (NIN) <span class="required">*</span></label>
-            <input type="text" id="nin" name="nin" placeholder="******************" inputmode="numeric" pattern="[0-9]{18}" maxlength="18"minlength="18" required />
-            <span class="error-msg" id="err-nin">Le NIN doit comporter exactement 18 chiffres.</span>
+            <input type="text" id="nin" name="nin" placeholder="******************"
+                   inputmode="numeric" pattern="[0-9]{18}" maxlength="18" minlength="18" required />
+            <!-- span vide : le message est injecté par register.js -->
+            <span class="error-msg" id="err-nin"></span>
           </div>
           <div class="form-group">
             <label for="ddn">Date de naissance <span class="required">*</span></label>
@@ -65,7 +66,7 @@
           </div>
         </div>
 
-        
+        <!-- Père / Grand-père -->
         <div class="form-row">
           <div class="form-group">
             <label for="pere">Prénom du père <span class="required">*</span></label>
@@ -79,11 +80,11 @@
           </div>
         </div>
 
-        
+        <!-- Mère / Email -->
         <div class="form-row">
           <div class="form-group">
             <label for="mere">Nom et prénom de la mère <span class="required">*</span></label>
-            <input type="text" id="mere" name="nom_mere" placeholder="Nom et prénom de la mère"required />
+            <input type="text" id="mere" name="nom_mere" placeholder="Nom et prénom de la mère" required />
             <span class="error-msg" id="err-mere"></span>
           </div>
           <div class="form-group">
@@ -93,7 +94,7 @@
           </div>
         </div>
 
-        
+        <!-- Téléphone / Wilaya -->
         <div class="form-row">
           <div class="form-group">
             <label for="telephone">Numéro de téléphone <span class="required">*</span></label>
@@ -167,7 +168,7 @@
           </div>
         </div>
 
-       
+        <!-- Mot de passe / Confirmation -->
         <div class="form-row">
           <div class="form-group">
             <label for="password">Mot de passe <span class="required">*</span></label>
@@ -181,24 +182,24 @@
           </div>
         </div>
 
-        <!Submit>
         <div class="form-submit">
           <button type="submit" class="btn-submit">Créer un compte</button>
         </div>
 
         <p class="form-login-link">
-          Vous avez déjà un compte ? <a href="login.html">Se connecter</a>
+          Vous avez déjà un compte ? <a href="Login.html">Se connecter</a>
         </p>
 
       </form>
     </div>
   </main>
 
-  <! FOOTER >
   <footer class="footer">
     <p>&copy; 2026 Ministère des Affaires Religieuses et du Waqf — Plateforme Tirage Hadjj</p>
   </footer>
 
+  <!-- register.js chargé en dernier : le DOM est prêt quand il s'exécute -->
+  <script src="Register.js"></script>
 
 </body>
 </html>

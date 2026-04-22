@@ -7,7 +7,7 @@
 </head>
 <body>
 
-   <nav class="navbar">
+  <nav class="navbar">
     <div class="nav-brand">Tirage au sort</div>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Accueil</a></li>
@@ -19,44 +19,70 @@
       <a href="Register.html" class="btn btn-outline">S'inscrire</a>
       <a href="Login.html" class="btn btn-primary">Se connecter</a>
     </div>
-    
   </nav>
 
-    <main class="form-page">
-        <div class="form-container">
-            <header class="form-header">
-                <div class="divider-line"></div>
-                <h1>Formulaire du connexion</h1>
-                <div class="divider-line"></div>
-            </header>
+  <main class="form-page">
+    <div class="form-container">
 
-            <form>
-                <div class="form-row">
-                    <div class="form-group">
-                 <label for="nin">Numéro d'identification national (NIN) <span class="required">*</span></label>
-                  <input type="text" id="nin" name="nin" placeholder="******************" inputmode="numeric" pattern="[0-9]{18}" maxlength="18"minlength="18" required />
-                 <span class="error-msg" id="err-nin">Le NIN doit comporter exactement 18 chiffres.</span>
-                </div>
-                    <div class="form-group">
-                        <label>Email <span class="required">*</span></label>
-                        <input type="email" placeholder="username@gmail.com">
-                    </div>
-                </div>
+      <header class="form-header">
+        <div class="divider-line"></div>
+        <h1>Formulaire de connexion</h1>
+        <div class="divider-line"></div>
+      </header>
 
-            <div class="form-row row-center">
-             <div class="form-group" style="max-width: 400px; width: 100%;">
-                <label>Mot de passe <span class="required">*</span></label>
-                <input type="password" placeholder="**********" required>
-                <small class="error-msg"></small> 
-             </div>
-            </div>
+      <!-- novalidate : désactive la validation native du navigateur,
+           notre login.js prend le relais -->
+      <form novalidate>
 
-                <div class="form-submit">
-                    <button type="submit" class="btn-submit">Se connecter</button>
-                </div>
-            </form>
+        <div class="form-row">
+
+          <!-- NIN : id et err-span déjà présents dans l'original -->
+          <div class="form-group">
+            <label for="nin">Numéro d'identification national (NIN) <span class="required">*</span></label>
+            <input type="text" id="nin" name="nin" placeholder="******************"
+                   inputmode="numeric" pattern="[0-9]{18}" maxlength="18" minlength="18" required />
+            <!-- span vide : le message est injecté par login.js -->
+            <span class="error-msg" id="err-nin"></span>
+          </div>
+
+          <!-- Email : id="email" et id="err-email" ajoutés -->
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="username@gmail.com" required />
+            <span class="error-msg" id="err-email"></span>
+          </div>
+
         </div>
-    </main>
 
+        <div class="form-row row-center">
+          <div class="form-group" style="max-width: 400px; width: 100%;">
+            <!-- Mot de passe : id="password" et id="err-password" ajoutés -->
+            <label for="password">Mot de passe <span class="required">*</span></label>
+            <input type="password" id="password" name="mot_de_passe" placeholder="**********" required />
+            <span class="error-msg" id="err-password"></span>
+          </div>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-submit">Se connecter</button>
+        </div>
+
+        <p class="form-login-link">
+          Pas encore de compte ? <a href="Register.html">S'inscrire</a>
+        </p>
+
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Ministère des Affaires Religieuses et du Waqf — Plateforme Tirage Hadjj</p>
+  </footer>
+
+  <!-- login.js chargé en dernier : le DOM est prêt quand il s'exécute -->
+  <script src="Login.js"></script>
+
+</body>
+</html>
 </body>
 </html>
