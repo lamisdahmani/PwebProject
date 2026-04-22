@@ -1,12 +1,5 @@
-/* ============================================================
-   login.js — Validation côté client pour Login.html
-   Ministère des Affaires Religieuses — Tirage Hadjj 2026
-   ============================================================ */
 
-
-/* ----------------------------------------------------------
-   UTILITAIRES : afficher / effacer une erreur sur un champ
-   ---------------------------------------------------------- */
+/*  afficher / effacer une erreur sur un champ ps drnah concept: DRY */
 
 function afficherErreur(inputId, errId, message) {
   const input = document.getElementById(inputId);
@@ -23,9 +16,7 @@ function effacerErreur(inputId, errId) {
 }
 
 
-/* ----------------------------------------------------------
-   RÈGLES DE VALIDATION
-   ---------------------------------------------------------- */
+/*RÈGLES DE VALIDATION*/
 
 /* NIN : exactement 18 chiffres */
 function validerNIN() {
@@ -69,10 +60,10 @@ function validerMotDePasse() {
 }
 
 
-/* ----------------------------------------------------------
+/*
    VALIDATION GLOBALE
    Variables séparées pour afficher TOUTES les erreurs ensemble.
-   ---------------------------------------------------------- */
+ */
 
 function validerFormulaire() {
   const r1 = validerNIN();
@@ -81,10 +72,6 @@ function validerFormulaire() {
   return r1 && r2 && r3;
 }
 
-
-/* ----------------------------------------------------------
-   ÉVÉNEMENTS
-   ---------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -99,8 +86,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* Validation en temps réel au blur */
-  const nin   = document.getElementById('nin');
+  /* Validation en temps réel au blur */    
+  const nin   = document.getElementById('nin'); // input se déclenche à chaque caractère tapé,
+                                                //  blur seulement quand on quitte. Pour le filtrage des non-chiffres,
+                                                //  on veut l'effet immédiat : si l'utilisateur tape une lettre, elle disparaît instantanément
   const email = document.getElementById('email');
   const pwd   = document.getElementById('password');
 
@@ -111,7 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
   /* Le NIN n'accepte que les chiffres en temps réel */
   if (nin) {
     nin.addEventListener('input', function () {
-      this.value = this.value.replace(/\D/g, '');
+      this.value = this.value.replace(/\D/g, ''); //\D = tout caractère qui n'est PAS un chiffre (inverse de \d). g = global, remplace toutes les occurrences. On remplace par '' 
+                                                // donc on efface les lettres au moment où elles sont saisies
     });
   }
 

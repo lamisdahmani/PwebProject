@@ -1,9 +1,4 @@
-/* ============================================
-   admin.js — Shared Admin JavaScript
-   Tirage au Sort — Plateforme Hadjj 2026
-   ============================================ */
-
-/* ---- User actions ---- */
+/* User actions  */
 function validateUser(btn) {
   if (!btn) return;     
   const row = btn.closest('tr');
@@ -22,12 +17,12 @@ function blockUser(btn) {
   if (!btn) return;
   const row = btn.closest('tr');
   const badge = row.querySelector('.badge');
-  badge.className = 'badge badge-blocked';
-  badge.textContent = 'Bloqué';
+  badge.className = 'badge badge-blocked';// change stye css to blocked
+  badge.textContent = 'Bloqué'; // ybdl the content text 
   row.dataset.status = 'bloque';
   const actions = row.querySelector('.tbl-actions');
   actions.innerHTML = `
-    <button class="btn btn-primary btn-sm" onclick="validateUser(this)">✓ Débloquer</button>
+    <button class="btn btn-primary btn-sm" onclick="validateUser(this)">✓ Débloquer</button> // ybdl the btns
     <button class="btn btn-danger btn-sm" onclick="deleteUser(this)">🗑 Suppr.</button>
     <button class="btn btn-ghost btn-sm" onclick="openUserDetail()">👁 Détail</button>`;
 }
@@ -42,8 +37,9 @@ function openUserDetail() {
   document.getElementById('userDetailModal').classList.add('open');
 }
 
-/* ---- Table filters ---- */
-function filterUsers(query) {
+/* table des filtres */
+function filterUsers(query) //filtre par text 
+ {
   const q = query.toLowerCase();
   document.querySelectorAll('#usersTable tbody tr').forEach(row => {
     row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
@@ -62,7 +58,7 @@ function filterResults(status) {
   });
 }
 
-/* ---- Launch tirage ---- */
+/* lanci tirage */
 function confirmLaunch() {
   document.getElementById('launchModal').classList.add('open');
 }

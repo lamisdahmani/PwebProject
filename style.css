@@ -361,21 +361,6 @@ ul { list-style: none; }
 }
 
 
-/*Footer */
-.footer {
-  text-align: center;
-  padding: 15px;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  border-top: 1px solid var(--border);
-  background: var(--green-nav);
-  margin-top: 2rem;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
 
 /*To be responsive */
 @media (max-width: 768px) {

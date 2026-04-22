@@ -1,6 +1,4 @@
-
-
-
+//dom= document object model (yjib html f js)
 function afficherErreur(inputId, errId, message) {
   const input = document.getElementById(inputId);
   const span  = document.getElementById(errId);
@@ -16,9 +14,8 @@ function effacerErreur(inputId, errId) {
 }
 
 
-/* ----------------------------------------------------------
-   RÈGLES DE VALIDATION — une fonction par champ
-   ---------------------------------------------------------- */
+//RÈGLES DE VALIDATION
+
 
 /* Champ texte obligatoire */
 function validerTexte(inputId, errId, libelle) {
@@ -66,12 +63,13 @@ function validerDateNaissance() {
 
 /* Email : format user@domaine.ext */
 function validerEmail() {
-  const val = document.getElementById('email').value.trim();
+  const val = document.getElementById('email').value.trim(); // trim() Supprime les espaces au début/fin. 
+                                                             
   if (!val) {
     afficherErreur('email', 'err-email', "L'adresse e-mail est obligatoire.");
     return false;
   }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) { //regex
     afficherErreur('email', 'err-email', 'Adresse e-mail invalide (ex : user@gmail.com).');
     return false;
   }
@@ -139,11 +137,7 @@ function validerConfirmation() {
 }
 
 
-/* ----------------------------------------------------------
-   VALIDATION GLOBALE
-   Variables séparées (pas de &&) pour que TOUTES les erreurs
-   s'affichent en même temps au lieu de s'arrêter à la première.
-   ---------------------------------------------------------- */
+   
 
 function validerFormulaire() {
   const r1  = validerTexte('nom',       'err-nom',       'Le nom');
@@ -162,20 +156,18 @@ function validerFormulaire() {
 }
 
 
-/* ----------------------------------------------------------
-   ÉVÉNEMENTS
-   ---------------------------------------------------------- */
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () { // attendre que la page soit prête
 
-  /* Soumission du formulaire */
+  //submition
   const form = document.getElementById('registerForm');
   if (form) {
     form.addEventListener('submit', function (e) {
-      e.preventDefault();
+      e.preventDefault(); // bloque l'envoi HTTP natif
       if (validerFormulaire()) {
-        form.submit();
+        form.submit();  // ttb3t si tout est OK
       }
+      // sinon : les erreurs stay 
     });
   }
 
