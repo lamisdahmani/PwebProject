@@ -17,7 +17,7 @@ function blockUser(btn) {
   if (!btn) return;
   const row = btn.closest('tr');
   const badge = row.querySelector('.badge');
-  badge.className = 'badge badge-blocked';// change stye css to blocked
+  badge.className = 'badge badge-blocked';/change stye css to blocked
   badge.textContent = 'Bloqué'; // ybdl the content text 
   row.dataset.status = 'bloque';
   const actions = row.querySelector('.tbl-actions');
@@ -68,7 +68,7 @@ function executeLaunch() {
   alert('Tirage au sort lancé avec succès ! Les résultats seront disponibles sous peu.');
 }
 
-/* ---- Close overlays on backdrop click ---- */
+/* Close overlays on backdrop click */
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.overlay').forEach(ov => {
     ov.addEventListener('click', function (e) {

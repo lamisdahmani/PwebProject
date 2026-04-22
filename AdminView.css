@@ -527,9 +527,7 @@ label.lbl .req { color: #b71c1c; }
   padding-top: 1rem; border-top: 1px solid #eef2ee;
 }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
+/* RESPONSIVE */
 @media (max-width: 1100px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
