@@ -1,4 +1,4 @@
-//dom= document object model (yjib html f js)
+/*dom= document object model (yjib html f js)*/
 function afficherErreur(inputId, errId, message) {
   const input = document.getElementById(inputId);
   const span  = document.getElementById(errId);
@@ -63,7 +63,7 @@ function validerDateNaissance() {
 
 /* Email : format user@domaine.ext */
 function validerEmail() {
-  const val = document.getElementById('email').value.trim(); // trim() Supprime les espaces au début/fin. 
+  const val = document.getElementById('email').value.trim(); /* trim() Supprime les espaces au début/fin. */
                                                              
   if (!val) {
     afficherErreur('email', 'err-email', "L'adresse e-mail est obligatoire.");

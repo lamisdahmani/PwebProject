@@ -90,9 +90,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* Validation en temps réel au blur */    
-  const nin   = document.getElementById('nin'); // input se déclenche à chaque caractère tapé,
-                                                //  blur seulement quand on quitte. Pour le filtrage des non-chiffres,
-                                                //  on veut l'effet immédiat : si l'utilisateur tape une lettre, elle disparaît instantanément
+  const nin   = document.getElementById('nin'); /*input se déclenche à chaque caractère tapé, */
+                                                /* blur seulement quand on quitte. Pour le filtrage des non-chiffres,*/
+                                                /* on veut l'effet immédiat : si l'utilisateur tape une lettre, elle disparaît instantanément*/
   const email = document.getElementById('email');
   const pwd   = document.getElementById('password');
 
@@ -103,8 +103,8 @@ document.addEventListener('DOMContentLoaded', function () {
   /* Le NIN n'accepte que les chiffres en temps réel */
   if (nin) {
     nin.addEventListener('input', function () {
-      this.value = this.value.replace(/\D/g, ''); //\D = tout caractère qui n'est PAS un chiffre (inverse de \d). g = global, remplace toutes les occurrences. On remplace par '' 
-                                                // donc on efface les lettres au moment où elles sont saisies
+      this.value = this.value.replace(/\D/g, ''); /*\D = tout caractère qui n'est PAS un chiffre (inverse de \d). g = global, remplace toutes les occurrences. On remplace par ''*/ 
+                                                /* donc on efface les lettres au moment où elles sont saisies*/
     });
   }
 
