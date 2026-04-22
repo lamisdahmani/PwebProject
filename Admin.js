@@ -17,12 +17,14 @@ function blockUser(btn) {
   if (!btn) return;
   const row = btn.closest('tr');
   const badge = row.querySelector('.badge');
-  badge.className = 'badge badge-blocked';/change stye css to blocked
-  badge.textContent = 'Bloqué'; // ybdl the content text 
+
+  badge.className = 'badge badge-blocked';/*change stye css to blocked*/
+  badge.textContent = 'Bloqué'; /*ybdl the content text */
+
   row.dataset.status = 'bloque';
   const actions = row.querySelector('.tbl-actions');
   actions.innerHTML = `
-    <button class="btn btn-primary btn-sm" onclick="validateUser(this)">✓ Débloquer</button> // ybdl the btns
+    <button class="btn btn-primary btn-sm" onclick="validateUser(this)">✓ Débloquer</button> 
     <button class="btn btn-danger btn-sm" onclick="deleteUser(this)">🗑 Suppr.</button>
     <button class="btn btn-ghost btn-sm" onclick="openUserDetail()">👁 Détail</button>`;
 }
