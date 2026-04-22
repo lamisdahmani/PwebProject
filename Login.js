@@ -1,5 +1,7 @@
 
+
 /*  afficher / effacer une erreur sur un champ ps drnah concept: DRY */
+
 
 function afficherErreur(inputId, errId, message) {
   const input = document.getElementById(inputId);
@@ -71,6 +73,7 @@ function validerFormulaire() {
   const r3 = validerMotDePasse();
   return r1 && r2 && r3;
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function () {

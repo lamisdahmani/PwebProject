@@ -54,7 +54,7 @@ function validerDateNaissance() {
     age--;
   }
   if (isNaN(age) || age < 18) {
-    afficherErreur('ddn', 'err-ddn', 'Vous devez avoir au moins 18 ans le jour du tirage.');
+    afficherErreur('ddn', 'err-ddn', 'Vous devez avoir au moins 18 ans .');
     return false;
   }
   effacerErreur('ddn', 'err-ddn');
