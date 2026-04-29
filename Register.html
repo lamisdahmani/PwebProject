@@ -19,7 +19,7 @@
     </ul>
     <div class="nav-actions">
       <a href="Register.html" class="btn btn-outline">S'inscrire</a>
-      <a href="Login.html" class="btn btn-primary">Se connecter</a>
+      <a href="Login.php" class="btn btn-primary">Se connecter</a>
     </div>
   </nav>
 
@@ -34,7 +34,7 @@
 
       <!-- novalidate : désactive la validation native du navigateur,
            notre register.js prend le relais -->
-      <form action="traitement_inscription.php" method="POST" id="registerForm" novalidate>
+      <form action="traitementinscription.php" method="POST" id="registerForm" novalidate>
 
         <!-- Nom / Prénom -->
         <div class="form-row">
@@ -187,15 +187,14 @@
         </div>
 
         <p class="form-login-link">
-          Vous avez déjà un compte ? <a href="Login.html">Se connecter</a>
+          Vous avez déjà un compte ? <a href="Login.php">Se connecter</a>
         </p>
 
       </form>
     </div>
   </main>
 
-  <!-- register.js chargé en dernier : le DOM est prêt quand il s'exécute -->
-  <script src="Register.js"></script>
+  
 
 </body>
 </html>

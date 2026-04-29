@@ -1,4 +1,4 @@
-/*dom= document object model (yjib html f js)*/
+/*dom= document object model (yjib html f js) dry */
 function afficherErreur(inputId, errId, message) {
   const input = document.getElementById(inputId);
   const span  = document.getElementById(errId);
@@ -79,7 +79,7 @@ function validerEmail() {
 
 /* Téléphone algérien : 10 chiffres, commence par 05 / 06 / 07 */
 function validerTelephone() {
-  const val = document.getElementById('telephone').value.replace(/\s/g, '');
+  const val = document.getElementById('telephone').value.replace(/\D/g, '');
   if (!val) {
     afficherErreur('telephone', 'err-telephone', 'Le numéro de téléphone est obligatoire.');
     return false;
@@ -199,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function () { // attendre que la p
       this.value = this.value.replace(/\D/g, '');
     });
   }
+
 
   /* Re-valider la confirmation si le mot de passe change */
   const pwdInput = document.getElementById('password');
