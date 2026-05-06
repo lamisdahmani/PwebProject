@@ -1,0 +1,220 @@
+<?php
+session_start();
+require_once 'db.php';
+require_once 'authguard.php';
+exiger_role(1);
+
+$db = get_db();
+
+// Stats dashboard
+$total_users  = (int)$db->query('SELECT COUNT(*) FROM utilisateurs WHERE role=2')->fetchColumn();
+$en_attente   = (int)$db->query('SELECT COUNT(*) FROM utilisateurs WHERE etat_compte=3')->fetchColumn();
+
+$stmt = $db->prepare("SELECT * FROM tirages WHERE etat<4 ORDER BY annee DESC LIMIT 1");
+$stmt->execute();
+$tirage = $stmt->fetch();
+
+$nb_participants = 0;
+if ($tirage) {
+    $stmt2 = $db->prepare('SELECT COUNT(*) FROM inscriptions i JOIN utilisateurs u ON u.id_utilisateur=i.id_utilisateur WHERE i.id_tirage=? AND u.etat_compte=1');
+    $stmt2->execute([(int)$tirage['id_tirage']]);
+    $nb_participants = (int)$stmt2->fetchColumn();
+}
+
+// Comptes en attente
+$stmt = $db->prepare("SELECT id_utilisateur,nom,prenom,id_wilaya FROM utilisateurs WHERE etat_compte=3 ORDER BY date_creation DESC LIMIT 10");
+$stmt->execute();
+$comptes_attente = $stmt->fetchAll();
+
+$auj = date('Y-m-d');
+$peut_lancer = $tirage && $tirage['date_tirage']==$auj && (int)$tirage['etat']>=2;
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Dashboard – Admin</title>
+  <link rel="stylesheet" href="AdminView.css"/>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><h2>Tirage au sort</h2><span>Espace Admin</span></div>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-nav-label">Navigation</p>
+    <nav class="sidebar-nav">
+      <a href="Admindash.php" class="active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Dashboard
+      </a>
+      <a href="Adminusers.php">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        Utilisateurs <?php if($en_attente>0): ?><span class="notif-count"><?=$en_attente?></span><?php endif; ?>
+      </a>
+      <a href="Adminparametres.php">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Paramétrage
+      </a>
+      <a href="Adminreslts.php">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Résultats
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+        <div><div class="sidebar-username"><?=htmlspecialchars($_SESSION['user_nom'])?></div><div class="sidebar-role">Administrateur</div></div>
+      </div>
+      <button class="sidebar-logout-btn" onclick="document.getElementById('logoutModal').classList.add('open')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="page-header">
+      <h1>Dashboard</h1>
+      <p>Vue d'ensemble — Tirage au Sort Hadjj <?=$tirage?$tirage['annee']:date('Y')?></p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon si-purple"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <div class="stat-value"><?=number_format($total_users)?></div><div class="stat-label">Comptes enregistrés</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon si-blue"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="stat-value"><?=number_format($nb_participants)?></div><div class="stat-label">Participants au tirage</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon si-gold"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div class="stat-value"><?=$tirage&&$tirage['date_tirage']?date('d/m/Y',strtotime($tirage['date_tirage'])):'—'?></div><div class="stat-label">Date du tirage</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon si-green"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <?php if($tirage&&(int)$tirage['etat']===2): ?>
+          <span class="pill pill-open" style="align-self:flex-start;">Ouvert</span>
+        <?php else: ?>
+          <span class="pill pill-closed" style="align-self:flex-start;">Fermé</span>
+        <?php endif; ?>
+        <div class="stat-label">Statut des inscriptions</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:1.25rem;">
+      <!-- Paramétrage -->
+      <div class="card">
+        <div class="card-header">
+          <div><h2>Paramétrage actuel</h2><p>Tirage <?=$tirage?$tirage['annee']:'—'?></p></div>
+          <a href="Adminparametres.php" class="btn btn-outline btn-sm">Modifier</a>
+        </div>
+        <div class="card-body">
+          <table class="param-tbl">
+            <tr><td>Nombre de gagnants</td><td><?=$tirage?(int)$tirage['nb_gagnants']:'—'?></td></tr>
+            <tr><td>Date du tirage</td><td><?=$tirage&&$tirage['date_tirage']?date('d/m/Y',strtotime($tirage['date_tirage'])):'—'?></td></tr>
+            <tr><td>Ouverture inscriptions</td><td><?=$tirage&&$tirage['date_ouverture_inscr']?date('d/m/Y',strtotime($tirage['date_ouverture_inscr'])):'—'?></td></tr>
+            <tr><td>Clôture inscriptions</td><td><?=$tirage&&$tirage['date_cloture_inscr']?date('d/m/Y',strtotime($tirage['date_cloture_inscr'])):'—'?></td></tr>
+          </table>
+        </div>
+        <div style="padding:1rem 1.5rem;border-top:1px solid #eef2ee;display:flex;justify-content:center;">
+          <button class="btn-launch" <?=$peut_lancer?'':'disabled'?> onclick="lancerTirage()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <?=$peut_lancer?'Lancer le tirage':"Tirage le ".($tirage&&$tirage['date_tirage']?date('d/m/Y',strtotime($tirage['date_tirage'])):'—')?>
+          </button>
+        </div>
+      </div>
+
+      <!-- Comptes en attente -->
+      <div class="card">
+        <div class="card-header">
+          <div><h2>Comptes en attente</h2><p><?=$en_attente?> compte(s) à valider</p></div>
+          <span class="pill pill-pending"><?=$en_attente?> en attente</span>
+        </div>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Nom et prénom</th><th>Actions</th></tr></thead>
+            <tbody>
+              <?php if(empty($comptes_attente)): ?>
+              <tr><td colspan="2" style="text-align:center;color:#6b8c6b;">Aucun compte en attente.</td></tr>
+              <?php else: foreach($comptes_attente as $c): ?>
+              <tr data-id="<?=(int)$c['id_utilisateur']?>">
+                <td><strong><?=htmlspecialchars($c['nom'].' '.$c['prenom'])?></strong></td>
+                <td>
+                  <div class="tbl-actions">
+                    <button class="btn btn-primary btn-sm" onclick="actionUser(this,'valider')">✓ Valider</button>
+                    <button class="btn btn-danger btn-sm"  onclick="actionUser(this,'bloquer')">✗ Bloquer</button>
+                  </div>
+                </td>
+              </tr>
+              <?php endforeach; endif; ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- LAUNCH MODAL -->
+<div id="launchModal" class="overlay">
+  <div class="modal">
+    <div class="modal-icon" style="background:#e8f5e9;color:#1b5e35;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
+    <h2>Lancer le tirage au sort ?</h2>
+    <p>Cette action est <strong>irréversible</strong>. <?=$nb_participants?> participants — <strong><?=$tirage?(int)$tirage['nb_gagnants']:0?> gagnants</strong> seront désignés.</p>
+    <div class="modal-actions">
+      <button class="btn-cancel-modal" onclick="document.getElementById('launchModal').classList.remove('open')">Annuler</button>
+      <button class="btn-confirm-modal" style="background:#1b5e35;" onclick="executerTirage()">Confirmer</button>
+    </div>
+  </div>
+</div>
+
+<!-- LOGOUT MODAL -->
+<div id="logoutModal" class="overlay">
+  <div class="modal">
+    <div class="modal-icon" style="background:#fce4e4;color:#b71c1c;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></div>
+    <h2>Se déconnecter ?</h2>
+    <p>Êtes-vous sûr(e) de vouloir quitter votre session ?</p>
+    <div class="modal-actions">
+      <button class="btn-cancel-modal" onclick="document.getElementById('logoutModal').classList.remove('open')">Annuler</button>
+      <a href="logout.php" class="btn-confirm-modal">Se déconnecter</a>
+    </div>
+  </div>
+</div>
+
+<script src="Admin.js"></script>
+<script>
+function lancerTirage() { document.getElementById('launchModal').classList.add('open'); }
+
+function executerTirage() {
+  document.getElementById('launchModal').classList.remove('open');
+  fetch('tirage.php', {method:'POST'})
+    .then(r=>r.json())
+    .then(data=>{
+      alert(data.succes
+        ? '✅ '+data.message+'\nGagnants: '+data.nb_gagnants+' / '+data.total
+        : '❌ '+data.message);
+      if(data.succes) location.reload();
+    })
+    .catch(()=>alert('❌ Erreur réseau.'));
+}
+
+function actionUser(btn, action) {
+  const row    = btn.closest('tr');
+  const id_user = row.dataset.id;
+  fetch('admin_actions.php', {
+    method:'POST',
+    body: new URLSearchParams({action, id_utilisateur: id_user})
+  })
+  .then(r=>r.json())
+  .then(data=>{
+    if(data.succes) row.remove();
+    else alert('❌ '+data.message);
+  });
+}
+
+document.querySelectorAll('.overlay').forEach(ov=>{
+  ov.addEventListener('click',e=>{ if(e.target===ov) ov.classList.remove('open'); });
+});
+</script>
+</body>
+</html>
