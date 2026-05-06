@@ -4,8 +4,9 @@ if (!isset($_SESSION['inscription_ok'])) {
     header('Location: Register.html');
     exit;
 }
+// Récupère le nom de l'utilisateur inscrit et le sécurise contre les injections XSS
 $nom = htmlspecialchars($_SESSION['new_user_nom']);
-unset($_SESSION['inscription_ok'], $_SESSION['new_user_nom']);
+unset($_SESSION['inscription_ok'], $_SESSION['new_user_nom']); //var session temp 
 ?>
 <!DOCTYPE html>
 <html lang="fr">

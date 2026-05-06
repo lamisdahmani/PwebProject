@@ -4,7 +4,7 @@
 <title>Accès refusé</title><link rel="stylesheet" href="style.css"></head>
 <body>
   <main class="form-page">
-    <div class="form-container" style="text-align:center; padding:3rem;">
+    <div class="form-container" style="text-align:center; padding:3rem;"> 
       <div style="font-size:4rem;">🚫</div>
       <h1 style="color:#b71c1c; margin:1rem 0;">403 — Accès refusé</h1>
       <p style="color:var(--text-muted);">Vous n'avez pas les droits pour accéder à cette page.</p>

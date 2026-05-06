@@ -65,6 +65,16 @@
         </p>
 
       </form>
+     <?php
+     session_start();
+     if (isset($_SESSION['login_erreur'])) {
+        echo '<div style="background:#fce4e4; color:#b71c1c; padding:0.75rem 1rem; border-radius:8px; margin-bottom:1rem;">
+          ⚠️ ' . $_SESSION['login_erreur'] . '
+        </div>';
+        unset($_SESSION['login_erreur']);
+      }
+     ?>
+     
     </div>
   </main>
 
@@ -72,12 +82,3 @@
 </body>
 </html>
 
-<?php
-session_start();
-if (isset($_SESSION['login_erreur'])) {
-    echo '<div style="background:#fce4e4; color:#b71c1c; padding:0.75rem 1rem; border-radius:8px; margin-bottom:1rem;">
-        ⚠️ ' . $_SESSION['login_erreur'] . '
-    </div>';
-    unset($_SESSION['login_erreur']);
-}
-?>
