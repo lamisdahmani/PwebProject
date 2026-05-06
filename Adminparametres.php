@@ -403,7 +403,7 @@ $msg_url = htmlspecialchars($_GET['msg'] ?? '');
 function lancerTirage() {
   if (!confirm("Lancer le tirage au sort ? Cette action est irréversible.")) return;
 
-  fetch('tirage.php', { method: 'POST' })
+  fetch('Tirage.php', { method: 'POST' })
     .then(r => r.json())
     .then(data => {
       if (data.succes) {

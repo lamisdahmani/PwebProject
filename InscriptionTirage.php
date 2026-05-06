@@ -29,12 +29,22 @@ if (!$user || (int)$user['etat_compte'] !== 1) {
 $stmt = $db->prepare(
     "SELECT * FROM tirages
      WHERE etat=2
-       AND date_ouverture_inscr <= :auj
-       AND date_cloture_inscr   >= :auj
+       AND date_ouverture_inscr <= :auj1
+       AND date_cloture_inscr   >= :auj2
      LIMIT 1"
 );
-$stmt->execute([':auj'=>$aujourd_hui]);
+
+// On exécute une seule fois avec les bons paramètres
+$stmt->execute([
+    ':auj1' => $aujourd_hui,
+    ':auj2' => $aujourd_hui
+]);
 $tirage = $stmt->fetch();
+
+if (!$tirage) {
+    echo json_encode(['succes'=>false,'message'=>'Les inscriptions ne sont pas ouvertes actuellement.']); 
+    exit;
+}
 if (!$tirage) {
     echo json_encode(['succes'=>false,'message'=>'Les inscriptions ne sont pas ouvertes actuellement.']); exit;
 }

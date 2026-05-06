@@ -197,7 +197,7 @@ function showToast(msg, ok=true) {
 }
 
 function sInscrire() {
-  fetch('inscription_tirage.php', {method:'POST'})
+  fetch('InscriptionTirage.php', {method:'POST'})
     .then(r => r.json())
     .then(data => {
       if (data.succes) {

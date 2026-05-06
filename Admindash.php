@@ -187,7 +187,7 @@ function lancerTirage() { document.getElementById('launchModal').classList.add('
 
 function executerTirage() {
   document.getElementById('launchModal').classList.remove('open');
-  fetch('tirage.php', {method:'POST'})
+  fetch('Tirage.php', {method:'POST'})
     .then(r=>r.json())
     .then(data=>{
       alert(data.succes
@@ -201,7 +201,7 @@ function executerTirage() {
 function actionUser(btn, action) {
   const row    = btn.closest('tr');
   const id_user = row.dataset.id;
-  fetch('admin_actions.php', {
+  fetch('AdminActions.php', {
     method:'POST',
     body: new URLSearchParams({action, id_utilisateur: id_user})
   })

@@ -126,7 +126,7 @@ function action(btn, act) {
   const row = btn.closest('tr');
   const id  = row.dataset.id;
   if (act==='supprimer' && !confirm('Supprimer définitivement ce compte ?')) return;
-  fetch('admin_actions.php', {
+  fetch('AdminActions.php', {
     method:'POST',
     body: new URLSearchParams({action:act, id_utilisateur:id})
   })

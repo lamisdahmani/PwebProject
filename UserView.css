@@ -65,26 +65,29 @@ body:has(.layout) {
   box-shadow: none; 
 }
 
+/* Un seul bloc .main propre */
 .main {
   flex: 1;
-  padding: 20px 32px;
+  height: 100vh;
+  padding: 24px 32px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   background: var(--green-pale);
-  overflow-y: auto;   
-  height: 100vh;
+  overflow-y: auto; 
+  overflow-x: hidden; /* Évite les scrolls horizontaux bizarres */
 }
 
 /* Sidebar */
 .sidebar {
   width: 200px;
   background: var(--green-dark);
-  height: 100%; 
+  height: 100vh; /* Utilise 100vh pour fixer la hauteur à l'écran */
   display: flex;
   flex-direction: column;
   padding: 28px 0 0px;
   position: sticky;
+  top: 0;         /* Garde la barre fixe pendant le scroll */
   flex-shrink: 0;
 }
 
@@ -138,30 +141,27 @@ body:has(.layout) {
 }
 .logout-btn:hover { background: rgba(255,255,255,0.1); }
 
-/*Main area*/
-.main {
-  flex: 1; 
-  height: 100vh;
-  padding: 24px 32px;
-  display: flex; 
-  flex-direction: column; 
-  gap: 20px;
-  background: var(--green-pale);
-  overflow-y: column;
-  padding-bottom: 40px;
-}
+
 
 /*Hero section userdash*/
 .hero--dashboard {
- background-color:var(--green-dark);
- border-radius:var(--radius);
-  display: block;
+  background-color: var(--green-dark);
+  border-radius: var(--radius);
+  display: flex;
   max-width: none;
   margin: 0;
   padding: 28px 32px;
   position: relative;
   overflow: hidden;
+  min-height: 180px; /* Taille minimale garantie */
+  flex-shrink: 0;    /* INDISPENSABLE : Empêche l'écrasement */
+  flex-direction: column;
+  justify-content: center;
+  height: 180px;     /* Force la hauteur exacte */
+  flex-shrink: 0;    /* Interdit au navigateur de réduire cette zone */
+  
 }
+
 
 /* Decorative circles */
 .hero--dashboard::before {
@@ -254,7 +254,11 @@ body:has(.layout) {
   border-radius: var(--radius);
   padding: 20px;
   box-shadow: var(--shadow);
+  max-height: 420px; /* Limite la hauteur du bloc */
+  overflow-y: auto;  /* Ajoute un scroll interne si trop de notifs */
+  flex-shrink: 0;    /* Empêche aussi ce bloc de s'écraser */
 }
+
 .info-card-title { font-size: 0.88rem; font-weight: 700; color: var(--text-dark); margin-bottom: 14px; }
 
 .timeline        { display: flex; flex-direction: column; gap: 12px; }
